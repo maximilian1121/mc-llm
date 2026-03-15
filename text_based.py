@@ -14,7 +14,7 @@ MODEL_PATH = "models/mc_text_item_gen.pth"
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 BATCH_SIZE = 16
 LR = 1e-4
-EPOCHS = 100
+EPOCHS = 200
 
 # Ensure models directory exists
 os.makedirs("models", exist_ok=True)

@@ -1,13 +1,18 @@
 url = "https://piston-data.mojang.com/v1/objects/ba2df812c2d12e0219c489c4cd9a5e1f0760f5bd/client.jar"
 import requests
 
+print("Fetching latest minecraft jar file!")
 content = requests.get(url=url).content
 
+print("Creating directories")
 import os
+
+os.makedirs("models", exist_ok=True)
 
 os.makedirs("temp", exist_ok=True)
 
-with open("temp/client.jar", "W") as f:
+print("Writing client.jar data to file")
+with open("temp/client.jar", "w") as f:
     f.write(content)
 
 import os
@@ -49,7 +54,11 @@ def extract_items_only(jar_path, output_dir="mc_dataset_rgba"):
     print(f"Success! {count} 16x16 item textures extracted to '{output_dir}'.")
 
 
+print("Extracting all minecraft item textures")
+
 extract_items_only("temp/client.jar")
+
+print("Adding context to all dataset images")
 
 for filename in os.listdir("./mc_dataset_rgba"):
     if filename.endswith(".png"):
@@ -62,3 +71,4 @@ for filename in os.listdir("./mc_dataset_rgba"):
             f.write(caption)
 
 print("Done! Every item now has a matching text caption.")
+print("Success! Please now run either seed/text_based.py to train/run the ai model!")

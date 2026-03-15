@@ -14,6 +14,10 @@ BATCH_SIZE = 16
 LEARNING_RATE = 1e-4
 EPOCHS = 50
 
+import os
+
+os.makedirs("models", exist_ok=True)
+
 
 # --- DATASET ---
 class MCDataset(Dataset):
