@@ -12,7 +12,7 @@ os.makedirs("models", exist_ok=True)
 os.makedirs("temp", exist_ok=True)
 
 print("Writing client.jar data to file")
-with open("temp/client.jar", "w") as f:
+with open("temp/client.jar", "wb") as f:
     f.write(content)
 
 import os
